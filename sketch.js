@@ -29,7 +29,7 @@ function mouseWheel(event) {
 }
 
 function draw(){
-  background('gray');
+  background(255,255,255);
   translate(cam.x, cam.y);
 
   tm.render();
