@@ -38,8 +38,8 @@ function MachineManager(){
 }
 
 function Machine(x, y, w, h, name, desc, updateFunc){
-  this.x = x;
-  this.y = y;
+  this.x = x-0.1;
+  this.y = y-0.1;
 
   this.w = w;
   this.h = h;

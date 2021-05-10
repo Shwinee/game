@@ -1,14 +1,17 @@
-var structures = [new Structure(100, 'copper', 'Solar panel', 'creates energy dependent on how close it is to the surface during the day.'),
- new Structure(10, 'rock', 'Tile', '...its just a tile')];
+var structures = [
+  new Structure(100, 'copper', 'Solar panel', 'creates energy dependent on how close it is to the surface during the day.', 51, 34),
+  new Structure(10, 'rock', 'Tile', '...its just a tile', 17, 17)
+];
 
-
-function Structure(cost, cItem, name, desc) {
+function Structure(cost, cItem, name, desc, w, h) {
   this.cost = cost;
   this.cItem = cItem;
 
   this.name = name;
   this.desc = desc;
 
+  this.w = w;
+  this.h = h;
 }
 
 
@@ -69,17 +72,17 @@ function ToolManager() {
 
     let clean = true;
 
-    if (this.structure.name == 'Solar panel'){
-      for (let i = 0; i < tiles.length; i++){
-        if (collideRectRect(x*18, y*18, 51, 34, tiles[i].x, tiles[i].y, 17, 17) == true){
-          clean = false;
-        }
+    for (let i = 0; i < tiles.length; i++){
+      if (collideRectRect(x*18, y*18, this.structure.w, this.structure.h, tiles[i].x, tiles[i].y, 17, 17) == true){
+        clean = false;
       }
-    }else if (this.structure.name == 'Tile'){
-      for (let i = 0; i < tiles.length; i++){
-        if (collideRectRect(x*18, y*18, 17, 17, tiles[i].x, tiles[i].y, 17, 17) == true){
-          clean = false;
-        }
+    }
+
+    for (let i = 0; i < machines.length; i++){
+      let machine = machines[i];
+
+      if (collideRectRect(x*18, y*18, this.structure.w, this.structure.h, machine.x, machine.y, machine.w, machine.h) == true){
+        clean = false;
       }
     }
 
@@ -87,40 +90,17 @@ function ToolManager() {
     if (clean == true){
       fill(0, 0, 0, 0);
       stroke(100, 100, 100);
-      if (this.structure.name == 'Solar panel'){
-        rect(x*18, y*18, 51, 34);
-      }else if (this.structure.name == 'Tile'){
-        rect(x*18, y*18, 17, 17);
-      }
+      rect(x*18, y*18, this.structure.w, this.structure.h);
 
       //if click make the solar pannel
       this.buildAble = true;
-      if (mouseIsPressed){
-
-        //click
-
-        // if (dta.rock-100 >= 0){
-        //   if (this.structure.name == 'Solar panel'){
-        //     new Machine((x*18)+1, (y*18)+1, 51, 34, 'Solar pannel', this.structure.desc);
-        //   }else if(this.structure.name == 'Tile'){
-        //     new Machine((x*18)+1, (y*18)+1, 17, 17, 'Tile', this.structure.desc);
-        //   }
-        //
-        //   dta.rock-=100;
-        //   this.building = false; //stops the animation
-        // }
-      }
     }else {
       this.buildAble = false;
 
       //things are touching stop
       stroke(255, 100, 100);
       fill(0, 0, 0, 0);
-      if (this.structure.name == 'Solar panel'){
-        rect(x*18, y*18, 51, 34);
-      }else if (this.structure.name == 'Tile'){
-        rect(x*18, y*18, 17, 17);
-      }
+      rect(x*18, y*18, this.structure.w, this.structure.h);
     }
   }
 
@@ -142,11 +122,7 @@ function ToolManager() {
         let y = Math.floor(map(mouseY-cam.y, 0, 1816, 0, 100)+1);
 
         if (dta.take(toolm.structure.cItem, toolm.structure.cost) != true){
-          if (toolm.structure.name == 'Solar panel'){
-            new Machine((x*18)+1, (y*18)+1, 51, 34, 'Solar pannel', toolm.structure.desc);
-          }else if(toolm.structure.name == 'Tile'){
-            new Machine((x*18)+1, (y*18)+1, 17, 17, 'Tile', toolm.structure.desc);
-          }
+          new Machine((x*18)+1, (y*18)+1, this.structure.w, this.structure.h, 'Solar pannel', toolm.structure.desc);
         }
       }
     }
