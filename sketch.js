@@ -14,9 +14,8 @@ var cam = {
   y: 1,
 }
 function mouseWheel(event) {
-  if (cam.y > -10){
-    cam.y = -10;
-    console.log('')
+  if (cam.y > -1){
+    cam.y = -1;
   }else{
     cam.y += -event.delta;
   }
