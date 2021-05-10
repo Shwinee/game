@@ -15,16 +15,16 @@ function TextArea(id){
   // this.buttons[0].innerText = ' ';
   // this.buttons[1].innerText = ' ';
   this.showButtons = function(){
-    this.buttons[0].style = "color: rgba(0, 0, 0, 255); width: 55px; border: 1; margin-left: 10px;";
-    this.buttons[1].style = "color: rgba(0, 0, 0, 255); width: 55px; border: 1; margin-left: 10px;";
+    this.buttons[0].style = "background-color: rgba(255, 255, 255, 0.7); color: rgba(0, 0, 0, 255); width: 55px; border: 1; margin-left: 10px; ";
+    this.buttons[1].style = "background-color: rgba(255, 255, 255, 0.7); color: rgba(0, 0, 0, 255); width: 55px; border: 1; margin-left: 10px;";
 
     this.buttons[0].disabled = false;
     this.buttons[1].disabled = false;
   }
 
     this.hideButtons = function(){
-    this.buttons[0].style = "color: rgba(0, 0, 0, 0); width: 55px; border: 0; margin-left: 10px;";
-    this.buttons[1].style = "color: rgba(0, 0, 0, 0); width: 55px; border: 0; margin-left: 10px;";
+    this.buttons[0].style = "background-color: rgba(255, 255, 255, 0.7); color: rgba(0, 0, 0, 0); width: 55px; border: 0; margin-left: 10px;";
+    this.buttons[1].style = "background-color: rgba(255, 255, 255, 0.7); color: rgba(0, 0, 0, 0); width: 55px; border: 0; margin-left: 10px;";
 
     this.buttons[0].disabled = true;
     this.buttons[1].disabled = true;

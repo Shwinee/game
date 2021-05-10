@@ -1,6 +1,6 @@
 var structures = [
-  new Structure(100, 'copper', 'Solar panel', 'creates energy dependent on how close it is to the surface during the day.', 51, 34),
-  new Structure(10, 'rock', 'Tile', '...its just a tile', 17, 17)
+  new Structure(100, 'copper', 'Solar panel', 'Creates energy dependent on how close it is to the surface during the day.', 51, 34),
+  new Structure(10, 'rock', 'Tile', '...its just a tile', 17, 17),
 ];
 
 function Structure(cost, cItem, name, desc, w, h) {
@@ -122,7 +122,7 @@ function ToolManager() {
         let y = Math.floor(map(mouseY-cam.y, 0, 1816, 0, 100)+1);
 
         if (dta.take(toolm.structure.cItem, toolm.structure.cost) != true){
-          new Machine((x*18)+1, (y*18)+1, this.structure.w, this.structure.h, 'Solar pannel', toolm.structure.desc);
+          new Machine((x*18)+1, (y*18)+1, this.structure.w, this.structure.h, this.structure.name, toolm.structure.desc);
         }
       }
     }

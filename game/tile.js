@@ -6,23 +6,24 @@ function makeWorld(){
 
   for (let i = 0; i < 22; i++){
     for (let y = 100; y > 9; y--){
-      if (y > 70){
-        if (rng(70, 100) <= y){
+      if (y > 68){
+        if (rng(68, 100) <= y){
           new Tile('iron', 10, i, y, new Debris('iron', rng(20, 50)));
-        }else{
+        }else if (rng(0, 100) <= 90){
           new Tile('copper', 10, i, y, new Debris('copper', rng(20, 50)));
+        }else{
+          new Tile('rock', 10, i, y, new Debris('hard rock', rng(y, y+10)));
         }
       }else{
-        if (y > 22){
-          if (rng(rng(20, 22), 33) <= y){
+        if (y > 32){
+          if (rng(22, 58) <= y){
             new Tile('copper', 10, i, y, new Debris('copper', rng(20, 50)));
           }else{
             new Tile('rock', 10, i, y, new Debris('hard rock', rng(y, y+10)));
             //copper
           }
-
         }else{
-          if (rng(11, 22) <= y){
+          if (rng(13, 22) <= y){
             new Tile('rock', 10, i, y, new Debris('hard rock', rng(y, y+10)));
           }else {
             new Tile('dirt', 10, i, y, new Debris('soft dirt', rng(20, 50)));
@@ -58,18 +59,23 @@ function TileManager(){
   this.render = function(){
     for (let i = 0; i < tiles.length; i++){
       if (Math.abs(tiles[i].y - (-cam.y+height/2)) <= 300){
-        if (tiles[i].name == 'dirt'){
-          fill(222,184,135)
-        }else if (tiles[i].name == 'rock'){
-          fill(192,192,192);
-        }else if (tiles[i].name == 'copper'){
-          fill(184, 115, 51);
-        }else if (tiles[i].name == 'iron'){
-          fill(161, 157, 148);
-        }
+        let imgg;
 
+        if (tiles[i].name == 'dirt'){
+          imgg = findSprite('dirt');
+        }else if (tiles[i].name == 'rock'){
+          imgg = findSprite('rock');
+        }else if (tiles[i].name == 'copper'){
+          imgg = findSprite('copper');
+        }else if (tiles[i].name == 'iron'){
+          imgg = findSprite('iron');
+        }
         stroke(0, 0, 0, 100);
-        rect(tiles[i].x, tiles[i].y, 17, 17);
+        if (imgg){
+          image(imgg.img, tiles[i].x, tiles[i].y, 17, 17);
+        }else{
+          rect(tiles[i].x, tiles[i].y, 17, 17);
+        }
         if (collidePointRect(mouseX, mouseY-cam.y, tiles[i].x, tiles[i].y, 17, 17)  && toolm.building == false){
           let tile = tiles[i];
 

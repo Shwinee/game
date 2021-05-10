@@ -9,20 +9,27 @@ function setup() {
   makeWorld();
 }
 
+function preload(){
+  new Sprite(loadImage('game/sprites/copper.png'), 'copper');
+  new Sprite(loadImage('game/sprites/dirt.png'), 'dirt');
+  new Sprite(loadImage('game/sprites/iron.png'), 'iron');
+  new Sprite(loadImage('game/sprites/rock.png'), 'rock');
+}
+
 var cam = {
   x: 1,
   y: 1,
 }
 function mouseWheel(event) {
-  if (cam.y > -1){
-    cam.y = -1;
+  if (cam.y > 50){
+    cam.y = 50;
   }else{
     cam.y += -event.delta;
   }
 }
 
 function draw(){
-  background(255, 255, 255);
+  background('gray');
   translate(cam.x, cam.y);
 
   tm.render();
