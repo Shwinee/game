@@ -2,6 +2,7 @@ var tiles = [];
 
 function makeWorld(){
   tiles = [];
+  machines = [];
 
   for (let i = 0; i < 22; i++){
     for (let y = 100; y > 9; y--){

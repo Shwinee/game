@@ -141,16 +141,13 @@ function ToolManager() {
         let x = Math.floor(map(mouseX, 0, width, 0, 21)+1);
         let y = Math.floor(map(mouseY-cam.y, 0, 1816, 0, 100)+1);
 
-        if (dta.rock-100 >= 0){
+        if (dta.take(toolm.structure.cItem, toolm.structure.cost) != true){
           if (toolm.structure.name == 'Solar panel'){
             new Machine((x*18)+1, (y*18)+1, 51, 34, 'Solar pannel', toolm.structure.desc);
           }else if(toolm.structure.name == 'Tile'){
             new Machine((x*18)+1, (y*18)+1, 17, 17, 'Tile', toolm.structure.desc);
           }
-
-          dta.rock-=100;
         }
-
       }
     }
   }

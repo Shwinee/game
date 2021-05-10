@@ -7,7 +7,6 @@ function setup() {
   createCanvas(400, 500);
   stroke(0, 0, 0, 100);
   makeWorld();
-  frameRate(30);
 }
 
 var cam = {
