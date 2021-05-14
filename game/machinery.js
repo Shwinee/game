@@ -18,7 +18,7 @@ function MachineManager(){
 
       rect(machine.x, machine.y, machine.w, machine.h);
 
-      if (collidePointRect(mouseX, mouseY-cam.y, machine.x, machine.y, machine.w, machine.h)){
+      if (collidePointRect(mouseX-cam.x, mouseY-cam.y, machine.x, machine.y, machine.w, machine.h)){
         let out = [];
         out[0] = "Name: "+machine.name+add2str('', 35-6+machine.name.length, ' ');
         out[1] = "Description: "+machine.description+add2str('', 35-6+machine.description.length, ' ');

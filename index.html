@@ -1,36 +1,39 @@
-<!DOCTYPE html>
-<html lang="en"><head>
+<!DOCTYPE html><html lang="en"><head>
     <script src="p5.js"></script>
-      <script defer="" src="p5.collide2d"></script>
+  
+    <script src="p5.collide2d.js"></script>
     <meta charset="utf-8">
   </head>
   <body>
 
     <div class="center">
-      <textarea readonly="" style="background-color: rgba(255, 255, 255, 0.9); resize: none; color: rgba(0,0,0,255); border: 0; margin-left: 10px;" id="text" cols="35" rows="7"> - Welcome to game!-
+      <textarea readonly="" style="background-color: rgba(255, 255, 255, 0.9); resize: none; color: rgba(0,0,0,255); border: 0; margin-left: 2px;" id="text" cols="35" rows="8"> - Welcome to game!-
         Made By Jacob</textarea>
-      <textarea style="resize: none; color: rgba(0,0,0,255); border: 0; margin-left: 10px; background-color: rgba(255, 255, 255, 0.9)" readonly="" rows="7" cols="10" id="debris">- debris -</textarea>
+      <textarea style="resize: none; color: rgba(0,0,0,255); border: 0; margin-left: 2px; background-color: rgba(255, 255, 255, 0.9)" readonly="" rows="8" cols="11" id="debris">- debris -</textarea>
       <br>
       <button id="button1" style="color: rgba(0, 0, 0, 255); width: 55px; margin-left: 10px;">opt1</button>
       <button id="button2" style="color: rgba(0, 0, 0, 255); width: 55px; margin-left: 10px;">opt2</button>
-      <canvas>yay</canvas
+<!--       <canvas width="400" height="500"></canvas> -->
     </div>
     <script src="util.js"></script>
     <script src="game/machinery.js"></script>
     <script src="game/2ndui.js"></script>
+    <script src="chunk.js"></script>
     <script src="game/tile.js"></script>
     <script src="game/tool.js"></script>
+    <script src="game/player.js"></script>
     <script src="game/sprites/spriteManager.js"></script>
+    <script src="game/serialization/serialize.js"></script>
     <script src="box.js"></script>
     <script src="sketch.js"></script>
   <style>
     html{
-      /* background-color: gray; */
-    }
+/*       /* background-color: gray; */ */
+     }
     div.center{
       position: absolute;
-      left: 30%;\
-    }
+      left: 30%;
+    } 
     canvas{
       position: absolute;
       left: 30%;

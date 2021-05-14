@@ -1,6 +1,6 @@
 var structures = [
   new Structure(100, 'copper', 'Solar panel', 'Creates energy dependent on how close it is to the surface during the day.', 51, 34),
-  new Structure(10, 'rock', 'Tile', '...its just a tile', 17, 17),
+  new Structure(10, 'rock', 'Tile', '...its just a tile', 17, 17)
 ];
 
 function Structure(cost, cItem, name, desc, w, h) {
@@ -65,9 +65,7 @@ function ToolManager() {
   }
 
   this.buildingAnimation = function() {
-    // console.log('ani');
-
-    let x = Math.floor(map(mouseX, 0, width, 0, 21)+1);
+    let x = Math.floor(map(mouseX-cam.x, 0, 36000, 0, 2000)+1);
     let y = Math.floor(map(mouseY-cam.y, 0, 1816, 0, 100)+1);
 
     let clean = true;
@@ -108,7 +106,7 @@ function ToolManager() {
   this.click = function(){
     if (toolm.curentTool == 'dig'){
       for (let i = 0; i < tiles.length; i++){
-        if (collidePointRect(mouseX, mouseY-cam.y, tiles[i].x, tiles[i].y, 17, 17)){
+        if (collidePointRect(mouseX-cam.x, mouseY-cam.y, tiles[i].x, tiles[i].y, 17, 17)){
 
           if (toolm.curentTool == 'dig'){
             tm.digTile(tiles[i]);
@@ -118,7 +116,7 @@ function ToolManager() {
       }
     }else if (toolm.curentTool == 'build'){
       if (toolm.buildAble == true && toolm.building == true){
-        let x = Math.floor(map(mouseX, 0, width, 0, 21)+1);
+            let x = Math.floor(map(mouseX-cam.x, 0, 36000, 0, 2000)+1);
         let y = Math.floor(map(mouseY-cam.y, 0, 1816, 0, 100)+1);
 
         if (dta.take(toolm.structure.cItem, toolm.structure.cost) != true){
@@ -130,14 +128,18 @@ function ToolManager() {
 }
 
 function keyPressed() {
-  if (key == 'd'){
+  if (key == 'g'){
     ta.animate('Selected tool: Dig', 1000);
     toolm.changeTool('dig');
     toolm.building = false;
   }else if (key == 'b'){
     toolm.changeTool('build');
   }
-
+  
+  if (key == 'w'){
+    player.addForce(createVector(0, -10));
+  }
+  
   if (key == 'c'){
     makeWorld();
   }
